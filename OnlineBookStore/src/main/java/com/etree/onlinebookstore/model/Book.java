@@ -3,7 +3,6 @@ package com.etree.onlinebookstore.model;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
@@ -11,10 +10,13 @@ import javax.persistence.ManyToOne;
 public class Book {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue
 	private int bookId;
-	private String bookName;
 	private int numberOfPages;
+	private String bookDescription;
+	private String bookName;
+	private double bookPrice;
+	private String unitStock;
 
 	@ManyToOne(cascade = CascadeType.MERGE)
 	private Category bookCategory;
@@ -46,32 +48,44 @@ public class Book {
 		this.numberOfPages = numberOfPages;
 	}
 
-	/**
-	 * @return the bookCategory
-	 */
+	public double getBookPrice() {
+		return bookPrice;
+	}
+
 	public Category getBookCategory() {
 		return bookCategory;
 	}
 
-	/**
-	 * @param bookCategory the bookCategory to set
-	 */
-	public void setBookCategory(Category bookCategory) {
-		this.bookCategory = bookCategory;
-	}
-
-	/**
-	 * @return the author
-	 */
 	public Author getAuthor() {
 		return author;
 	}
 
-	/**
-	 * @param author the author to set
-	 */
+	public void setBookPrice(double bookPrice) {
+		this.bookPrice = bookPrice;
+	}
+
+	public void setBookCategory(Category bookCategory) {
+		this.bookCategory = bookCategory;
+	}
+
 	public void setAuthor(Author author) {
 		this.author = author;
+	}
+
+	public String getBookDescription() {
+		return bookDescription;
+	}
+
+	public String getUnitStock() {
+		return unitStock;
+	}
+
+	public void setBookDescription(String bookDescription) {
+		this.bookDescription = bookDescription;
+	}
+
+	public void setUnitStock(String unitStock) {
+		this.unitStock = unitStock;
 	}
 
 }

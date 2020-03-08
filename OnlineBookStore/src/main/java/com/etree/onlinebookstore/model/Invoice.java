@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -18,6 +19,9 @@ public class Invoice {
 
 	@Temporal(TemporalType.DATE)
 	private Date invoiceDate;
+
+	@OneToOne
+	private CustomerOrder bookOrder;
 
 	public long getInvoiceId() {
 		return invoiceId;
@@ -33,6 +37,14 @@ public class Invoice {
 
 	public void setInvoiceDate(Date invoiceDate) {
 		this.invoiceDate = invoiceDate;
+	}
+
+	public CustomerOrder getBookOrder() {
+		return bookOrder;
+	}
+
+	public void setBookOrder(CustomerOrder bookOrder) {
+		this.bookOrder = bookOrder;
 	}
 
 }

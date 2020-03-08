@@ -3,6 +3,7 @@ package com.etree.onlinebookstore.model;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Address {
@@ -16,6 +17,9 @@ public class Address {
 	private String state;
 	private String country;
 	private int zipCode;
+
+	@OneToOne(mappedBy = "customerAddress")
+	private Customer customer;
 
 	public int getAddressId() {
 		return addressId;
@@ -71,6 +75,14 @@ public class Address {
 
 	public void setZipCode(int zipCode) {
 		this.zipCode = zipCode;
+	}
+
+	public Customer getCustomer() {
+		return customer;
+	}
+
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
 	}
 
 }

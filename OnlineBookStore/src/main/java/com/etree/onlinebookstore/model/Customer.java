@@ -6,6 +6,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Customer {
 
@@ -13,8 +15,13 @@ public class Customer {
 	@GeneratedValue
 	private int customerId;
 	private String customerName;
+	private String phoneNumber;
 
 	@OneToOne(cascade = CascadeType.ALL)
+	private User user;
+
+	@OneToOne(cascade = { CascadeType.REMOVE, CascadeType.PERSIST })
+	@JsonIgnore
 	private Cart cart;
 
 	@OneToOne(cascade = CascadeType.ALL)
@@ -42,6 +49,22 @@ public class Customer {
 
 	public void setCustomerAddress(Address customerAddress) {
 		this.customerAddress = customerAddress;
+	}
+
+	public String getPhoneNumber() {
+		return phoneNumber;
+	}
+
+	public Cart getCart() {
+		return cart;
+	}
+
+	public void setPhoneNumber(String phoneNumber) {
+		this.phoneNumber = phoneNumber;
+	}
+
+	public void setCart(Cart cart) {
+		this.cart = cart;
 	}
 
 }
