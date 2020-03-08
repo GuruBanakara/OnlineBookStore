@@ -1,20 +1,26 @@
 package com.etree.onlinebookstore.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.SequenceGenerator;
+import javax.persistence.ManyToOne;
 
-@Entity(name = "Books")
-@SequenceGenerator(name = "book", initialValue = 100)
+@Entity
 public class Book {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY, generator = "book")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int bookId;
 	private String bookName;
 	private int numberOfPages;
+
+	@ManyToOne(cascade = CascadeType.MERGE)
+	private Category bookCategory;
+
+	@ManyToOne(cascade = CascadeType.MERGE)
+	private Author author;
 
 	public int getBookId() {
 		return bookId;

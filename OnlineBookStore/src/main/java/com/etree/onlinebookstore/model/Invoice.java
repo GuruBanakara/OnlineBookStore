@@ -10,27 +10,29 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-public class Order {
+public class Invoice {
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int orderId;
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date orderDate;
+	private long invoiceId;
 
-	public int getOrderId() {
-		return orderId;
+	@Temporal(TemporalType.DATE)
+	private Date invoiceDate;
+
+	public long getInvoiceId() {
+		return invoiceId;
 	}
 
-	public void setOrderId(int orderId) {
-		this.orderId = orderId;
+	public void setInvoiceId(long invoiceId) {
+		this.invoiceId = invoiceId;
 	}
 
-	public Date getOrderDate() {
-		return orderDate;
+	public Date getInvoiceDate() {
+		return invoiceDate;
 	}
 
-	public void setOrderDate(Date orderDate) {
-		this.orderDate = orderDate;
+	public void setInvoiceDate(Date invoiceDate) {
+		this.invoiceDate = invoiceDate;
 	}
 
 }
