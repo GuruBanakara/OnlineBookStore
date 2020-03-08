@@ -46,4 +46,32 @@ public class Book {
 		this.numberOfPages = numberOfPages;
 	}
 
+	/**
+	 * @return the bookCategory
+	 */
+	public Category getBookCategory() {
+		return bookCategory;
+	}
+
+	/**
+	 * @param bookCategory the bookCategory to set
+	 */
+	public void setBookCategory(Category bookCategory) {
+		this.bookCategory = bookCategory;
+	}
+
+	/**
+	 * @return the author
+	 */
+	public Author getAuthor() {
+		return author;
+	}
+
+	/**
+	 * @param author the author to set
+	 */
+	public void setAuthor(Author author) {
+		this.author = author;
+	}
+
 }

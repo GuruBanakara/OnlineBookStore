@@ -15,6 +15,9 @@ public class Customer {
 	private String customerName;
 
 	@OneToOne(cascade = CascadeType.ALL)
+	private Cart cart;
+
+	@OneToOne(cascade = CascadeType.ALL)
 	private Address customerAddress;
 
 	public int getCustomerId() {
