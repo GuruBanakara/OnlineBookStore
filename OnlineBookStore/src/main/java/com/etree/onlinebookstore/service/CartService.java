@@ -1,6 +1,6 @@
 package com.etree.onlinebookstore.service;
 
-import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,8 +18,10 @@ public class CartService {
 		return dao.save(entity);
 	}
 
-	public List<Cart> findAll() {
-		return dao.findAll();
+	public Optional<Cart> findById(Integer id) {
+		return dao.findById(id);
 	}
+
+	
 
 }

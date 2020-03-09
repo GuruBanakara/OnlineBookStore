@@ -17,14 +17,4 @@ public class CartController {
 	@Autowired
 	private CartService service;
 
-	@PostMapping("/cart")
-	public Cart save(@RequestBody Cart entity) {
-		return service.save(entity);
-	}
-
-	@GetMapping("cartItems")
-	public List<Cart> findAll() {
-		return service.findAll();
-	}
-
 }

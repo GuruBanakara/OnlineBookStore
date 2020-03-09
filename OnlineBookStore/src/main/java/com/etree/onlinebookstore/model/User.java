@@ -6,7 +6,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 @Entity(name = "users")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "userId", scope = User.class)
 public class User {
 
 	@Id
@@ -16,7 +21,8 @@ public class User {
 	private String password;
 	private boolean enabled;
 
-	@OneToOne(mappedBy = "user")
+	@OneToOne(mappedBy = "users")
+	@JsonIgnore
 	private Customer customer;
 
 	public int getUserId() {

@@ -1,6 +1,7 @@
 package com.etree.onlinebookstore.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -25,4 +26,10 @@ public class BookService {
 	public Book findByBookName(String bookName) {
 		return dao.findByBookName(bookName);
 	}
+
+	public Optional<Book> findById(Integer id) {
+		return dao.findById(id);
+	}
+	
+	
 }

@@ -3,14 +3,20 @@ package com.etree.onlinebookstore.model;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 @Entity
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "bookId", scope = Book.class)
 public class Book {
 
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int bookId;
 	private int numberOfPages;
 	private String bookDescription;
@@ -19,9 +25,11 @@ public class Book {
 	private String unitStock;
 
 	@ManyToOne(cascade = CascadeType.MERGE)
+	@JoinColumn(name = "categoryId")
 	private Category bookCategory;
 
 	@ManyToOne(cascade = CascadeType.MERGE)
+	@JoinColumn(name = "authorId")
 	private Author author;
 
 	public int getBookId() {

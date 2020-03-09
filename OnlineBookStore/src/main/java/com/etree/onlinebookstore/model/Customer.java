@@ -3,28 +3,36 @@ package com.etree.onlinebookstore.model;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 @Entity
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "customerId", scope = Customer.class)
 public class Customer {
 
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int customerId;
 	private String customerName;
 	private String phoneNumber;
 
 	@OneToOne(cascade = CascadeType.ALL)
-	private User user;
+	@JoinColumn(name = "userId")
+	private User users;
 
-	@OneToOne(cascade = { CascadeType.REMOVE, CascadeType.PERSIST })
+	@OneToOne
+	@JoinColumn(name = "cartId")
 	@JsonIgnore
 	private Cart cart;
 
 	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "addressId")
 	private Address customerAddress;
 
 	public int getCustomerId() {
@@ -65,6 +73,14 @@ public class Customer {
 
 	public void setCart(Cart cart) {
 		this.cart = cart;
+	}
+
+	public User getUser() {
+		return users;
+	}
+
+	public void setUser(User user) {
+		this.users = user;
 	}
 
 }

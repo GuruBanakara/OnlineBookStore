@@ -2,14 +2,20 @@ package com.etree.onlinebookstore.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 @Entity
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "addressId", scope = Address.class)
 public class Address {
 
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int addressId;
 	private String address1;
 	private String landmark;
@@ -19,6 +25,7 @@ public class Address {
 	private int zipCode;
 
 	@OneToOne(mappedBy = "customerAddress")
+	@JsonIgnore
 	private Customer customer;
 
 	public int getAddressId() {

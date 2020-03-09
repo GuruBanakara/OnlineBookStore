@@ -4,11 +4,15 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 @Entity
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "cartItemId", scope = CartItem.class)
 public class CartItem {
 
 	@Id
@@ -18,6 +22,7 @@ public class CartItem {
 	private double totalPrice;
 
 	@ManyToOne
+	@JoinColumn(name = "bookId")
 	private Book book;
 
 	@ManyToOne
