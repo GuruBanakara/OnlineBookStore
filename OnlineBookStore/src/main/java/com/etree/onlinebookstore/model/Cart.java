@@ -23,11 +23,11 @@ public class Cart {
 	private int cartId;
 	private double cartTotal;
 
-	@OneToOne
+	@OneToOne(mappedBy = "cart")
 	@JsonIgnore
 	private Customer customer;
 
-	@OneToMany(mappedBy = "cart", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "cart")
 	private List<CartItem> cartItems;
 
 	public int getCartId() {

@@ -19,14 +19,14 @@ public class BookController {
 	@Autowired
 	private BookService service;
 
-	@PostMapping("/book")
+	@PostMapping("/admin/book")
 	public ResponseEntity<Book> saveBook(@RequestBody Book book) {
 		Book book2 = service.save(book);
 		return ResponseEntity.ok().body(book2);
 
 	}
 
-	@GetMapping("/books")
+	@GetMapping("/admin/books")
 	public ResponseEntity<List<Book>> getAllBooks() {
 		return ResponseEntity.ok().body(service.findAll());
 

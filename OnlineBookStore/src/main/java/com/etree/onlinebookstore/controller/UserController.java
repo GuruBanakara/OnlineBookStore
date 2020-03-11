@@ -1,12 +1,11 @@
 package com.etree.onlinebookstore.controller;
 
-import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.etree.onlinebookstore.model.User;
 import com.etree.onlinebookstore.service.UserService;
 
 @RestController
@@ -15,17 +14,15 @@ public class UserController {
 	@Autowired
 	private UserService service;
 
-	@PostMapping
-	public User save(User entity) {
-		return service.save(entity);
-	}
-
-	public Optional<User> findById(Integer id) {
-		return service.findById(id);
-	}
-
-	public void delete(User entity) {
-		service.delete(entity);
-	}
+	/*
+	 * @GetMapping("/login") public String login(@RequestParam(value = "error",
+	 * required = false) String error,
+	 * 
+	 * @RequestParam(value = "logout", required = false) String logout, Model model)
+	 * { if (error != null) model.addAttribute("error",
+	 * "Invalid username and Password"); if (logout != null)
+	 * model.addAttribute("logout", "You have logged out successfully"); return
+	 * "login"; }
+	 */
 
 }

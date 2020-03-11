@@ -17,13 +17,13 @@ public class CategoryController {
 	@Autowired
 	private CategoryService service;
 
-	@PostMapping("/category")
+	@PostMapping("/admin/category")
 	public Category saveCategory(@RequestBody Category category) {
 		return service.save(category);
 
 	}
 
-	@GetMapping("categories")
+	@GetMapping("/categories")
 	public List<Category> getAllCategories() {
 		return service.findAll();
 

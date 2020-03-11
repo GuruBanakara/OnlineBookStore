@@ -26,7 +26,7 @@ public class Customer {
 	@JoinColumn(name = "userId")
 	private User users;
 
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "cartId")
 	@JsonIgnore
 	private Cart cart;
@@ -42,7 +42,7 @@ public class Customer {
 	public void setCustomerId(int customerId) {
 		this.customerId = customerId;
 	}
-
+  
 	public String getCustomerName() {
 		return customerName;
 	}

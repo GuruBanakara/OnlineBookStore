@@ -24,4 +24,8 @@ public class CartItemService {
 		dao.deleteAll();
 	}
 
+	public void deleteById(Integer id) {
+		dao.deleteById(id);
+	}
+
 }

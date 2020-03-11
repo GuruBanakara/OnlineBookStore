@@ -17,12 +17,12 @@ public class AuthorController {
 	@Autowired
 	private AuthorService service;
 
-	@PostMapping("/author")
+	@PostMapping("/admin/author")
 	public Author save(@RequestBody Author entity) {
 		return service.save(entity);
 	}
 
-	@GetMapping("authors")
+	@GetMapping("/admin/authors")
 	public List<Author> findAll() {
 		return service.findAll();
 	}

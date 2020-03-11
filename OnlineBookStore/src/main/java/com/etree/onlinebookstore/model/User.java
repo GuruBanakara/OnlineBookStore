@@ -1,9 +1,11 @@
 package com.etree.onlinebookstore.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
@@ -20,6 +22,9 @@ public class User {
 	private String mailId;
 	private String password;
 	private boolean enabled;
+
+	@ManyToOne(cascade = CascadeType.MERGE)
+	private Authorities authorities;
 
 	@OneToOne(mappedBy = "users")
 	@JsonIgnore
@@ -63,6 +68,14 @@ public class User {
 
 	public void setCustomer(Customer customer) {
 		this.customer = customer;
+	}
+
+	public Authorities getAuthorities() {
+		return authorities;
+	}
+
+	public void setAuthorities(Authorities authorities) {
+		this.authorities = authorities;
 	}
 
 }
